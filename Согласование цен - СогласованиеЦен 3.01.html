@@ -1,0 +1,378 @@
+<html><style>
+            .header
+            {
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            }
+            .item
+            {
+            font-weight: bold;
+            }
+            .subitem
+            {
+            font-weight: bold;
+            font-style: italic;
+            }
+            .def
+            {
+            font-style: italic;
+            }
+            p
+            {
+            font-size: 14px;
+            margin-top: 0em;
+            margin-bottom: 0em;
+            text-indent: 20px;
+            }
+            .element_table
+            {
+            border-collapse: collapse;
+            border: 1px solid black;
+            width: 100%;
+            }
+            .table_name
+            {
+            font-weight: bold;
+            text-align: center;
+            }
+            .table_header
+            {
+            background: #ccc;
+            font-weight: bold;
+            text-align: center;
+            }
+            .element_td
+            {
+            border-collapse: collapse;
+            border: 1px solid black;
+            }
+            .td_center
+            {
+            border-collapse: collapse;
+            border: 1px solid black;
+            text-align: center;
+            }
+            .table_number
+            {
+            text-align: right;
+            font-size: 12;
+            }
+            div
+            {
+            font-size: 14px;
+            }
+         </style><body onload="onLoadPage()"><div class="header">Согласование цен</div><br><div class="item"><p>Общие сведения</p></div><div><p><span>
+         1.
+         Согласование цен<p><span>Документ, служащий для согласования цен</span></p></span></p><p><span></span></p></div><br><div class="item"><p>Описание файла обмена</p></div><div><p><span>
+            1. <b>Имя файла обмена</b> должно иметь следующий вид:
+         </span></p></div><div class="subitem"><p>Параметры первой строки файла обмена</p></div><p>Первая строка XML файла должна иметь следующий вид:</p><p>&lt;?xml version ="1.0" encoding ="windows-1251"?&gt;</p><br><div><p>2. <span class="item">Логическая модель файла обмена</span>.
+         Элементами логической модели файла обмена являются элементы и атрибуты XML файла.
+         Перечень структурных элементов логической модели файла обмена и сведения о них приведены в таблицах 1 &ndash; 29 настоящего Формата.</p><p>Для каждого структурного элемента логической модели файла обмена приводятся следующие сведения:</p><p><span class="def">Наименование элемента</span>. Приводится полное наименование элемента.</p><p><span class="def">Сокращенное наименование элемента</span>.
+         Приводится сокращенное наименование элемента.
+         Синтаксис сокращенного наименования должен удовлетворять спецификации XML.</p><p><span class="def">Признак типа элемента</span>.
+         Может принимать следующие значения:
+         "С" &ndash; сложный элемент логической модели (содержит вложенные элементы),
+         "П" &ndash; простой элемент логической модели, реализованный в виде элемента XML файла,
+         "А" &ndash; простой элемент логической модели, реализованный в виде атрибута элемента XML файла.
+         "И" &ndash; взаимоисключающий элемент модели (XML-файл может содержать только один заполненный элемент из группы исключительности). Разные группы исключительности отмечены цветом.
+         Простой элемент логической модели не содержит вложенные элементы.</p><p><span class="def"> Формат значения элемента</span>.
+         Формат значения элемента представляется следующими условными обозначениями:
+         Т &ndash; символьная строка;
+         N &ndash; числовое значение (целое или дробное).</p><p>Формат символьной строки указывается в виде Т(n-к) или T(=к), где n - минимальное количество знаков, к &ndash; максимальное количество знаков, символ "-" &ndash; разделитель, символ "=" означает фиксированное количество знаков в строке.
+         В случае, если минимальное количество знаков равно 0, формат имеет вид Т(0-к).
+         В случае, если максимальное количество знаков неограниченно, формат имеет вид Т(n-).</p><p>Формат числового значения указывается в виде N(m.к), где m &ndash; максимальное количество знаков в числе, включая знак (для отрицательного числа), целую и дробную часть числа без разделяющей десятичной точки, k &ndash; максимальное число знаков дробной части числа.
+         Если число знаков дробной части числа равно 0 (т.е. число целое), то формат числового значения имеет вид N(m).</p><p>Для простых элементов, являющихся базовыми в XML (определенными в http://www.w3.org/TR/xmlschema-0), например, элемент с типом "date", поле "Формат значения элемента" не заполняется.
+         Для таких элементов в поле "Дополнительная информация" указывается тип базового элемента.</p><p><span class="def">Признак обязательности элемента</span> определяет обязательность присутствия элемента (совокупности наименования элемента и его значения) в файле обмена.
+         Признак обязательности элемента может принимать следующие значения:
+         "О" &ndash; наличие элемента в файле обмена обязательно;
+         "Н" &ndash; присутствие элемента в файле обмена необязательно, т.е. элемент может отсутствовать.
+         Если элемент принимает ограниченный перечень значений (по классификатору, кодовому словарю и т.п.), то признак обязательности элемента дополняется символом "К". Например: "ОК".
+         В случае если количество реализаций элемента может быть более одной, то признак обязательности элемента дополняется символом "М". Например: "НМ, ОКМ".</p><p>К вышеперечисленным признакам обязательности элемента может добав-ляться значение "У" в случае описания в XSD схеме условий присутствия (отсутствия) элемента в файле обмена или к принимаемым значениям элемента. Например: "НУ", "ОКУ".</p><p><span class="def">Дополнительная информация</span> - указываются (поясняются) требования к данному элементу XML файла.
+         Для сложных элементов указывается ссылка на таблицу, в которой описывается состав данного элемента.
+         Для элементов, принимающих ограниченный перечень значений из классификатора (кодового словаря и т.п.), указывается соответствующее наименование классификатора (кодового словаря и т.п.) или приводится перечень возможных значений.
+         Для классификатора (кодового словаря и т.п.) может указываться ссылка на его местонахождение. Для элементов, использующих пользовательский тип данных, указывается наименование типового элемента.</p><p>XSD схема файла обмена в электронном виде приводится отдельным файлом и размещается на сайте Федеральной налоговой службы.</p></div><div class="table_number">
+               Таблица 1</div><div class="table_name"><span>Файл
+                  (Файл)
+               </span></div><table name="&#1060;&#1072;&#1081;&#1083;" id="1" data="&#1060;&#1072;&#1081;&#1083;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Идентификатор файла</td><td class="td_center">ИдФайл</td><td class="td_center">А</td><td class="td_center">
+                           T(1-200)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Формат</td><td class="td_center">Формат</td><td class="td_center">А</td><td class="td_center">
+                           T(1-40)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Версия формата</td><td class="td_center">ВерсияФормата</td><td class="td_center">А</td><td class="td_center">
+                           T(1-5)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Документ</td><td class="td_center">Документ</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Код формы</td><td class="td_center">КодФормы</td><td class="td_center">А</td><td class="td_center">
+                           T(1-1000)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 2</div><div class="table_name"><span>Документ
+                  (Документ)
+               </span></div><table name="&#1044;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;" id="2" data="&#1044;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Срок действия</td><td class="td_center">Период</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Параметр</td><td class="td_center">Параметр</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">НМ</td><td class="element_td">Параметр</td></tr><tr><td class="element_td">Валюта документа</td><td class="td_center">Валюта</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Сведения о поставщике</td><td class="td_center">Поставщик</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Сведения о покупателе</td><td class="td_center">Покупатель</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Основание</td><td class="td_center">Основание</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">ТаблДок</td><td class="td_center">ТаблДок</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Сведения о лице, подписывающем файл обмена счета-фактуры (информации продавца) в электронной форме</td><td class="td_center">Подписант</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">НМ</td><td class="element_td"></td></tr><tr><td class="element_td">Номер</td><td class="td_center">Номер</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Дата формирования документа</td><td class="td_center">Дата</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Время формирования документа</td><td class="td_center">Время</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 3</div><div class="table_name"><span>Период
+                  (Срок действия)
+               </span></div><table name="&#1055;&#1077;&#1088;&#1080;&#1086;&#1076;" id="3" data="&#1057;&#1088;&#1086;&#1082; &#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1103;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Дата начала действия цен</td><td class="td_center">ДатаНач</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Дата окончания действия цен</td><td class="td_center">ДатаКнц</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 4</div><div class="table_name"><span>Параметр
+                  (Параметр)
+               </span></div><table name="&#1055;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;" id="4" data="&#1055;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Имя</td><td class="td_center">Имя</td><td class="td_center">А</td><td class="td_center">
+                           T(1-1000)
+                        </td><td class="td_center">Н</td><td class="element_td">Имя</td></tr><tr><td class="element_td">Значение</td><td class="td_center">Значение</td><td class="td_center">А</td><td class="td_center">
+                           T(1-1000)
+                        </td><td class="td_center">Н</td><td class="element_td">Значение</td></tr></table><br><div class="table_number">
+               Таблица 5</div><div class="table_name"><span>Валюта
+                  (Валюта документа)
+               </span></div><table name="&#1042;&#1072;&#1083;&#1102;&#1090;&#1072;" id="5" data="&#1042;&#1072;&#1083;&#1102;&#1090;&#1072; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Код общероссийского классификатора валют</td><td class="td_center">КодОКВ</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">НК</td><td class="element_td"></td></tr><tr><td class="element_td">Курс валюты</td><td class="td_center">Курс</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Название валюты</td><td class="td_center">Название</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Сумма в валюте</td><td class="td_center">Сумма</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 6</div><div class="table_name"><span>Поставщик
+                  (Сведения о поставщике)
+               </span></div><table name="&#1055;&#1086;&#1089;&#1090;&#1072;&#1074;&#1097;&#1080;&#1082;" id="6" data="&#1057;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1086;&#1089;&#1090;&#1072;&#1074;&#1097;&#1080;&#1082;&#1077;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Сведения о организации</td><td class="td_center groupby" groupby="1">СвЮЛ</td><td class="td_center">ИС</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">СвФЛ</td><td class="td_center groupby" groupby="1">СвФЛ</td><td class="td_center">ИС</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td">СвФЛ</td></tr><tr><td class="element_td">Адрес</td><td class="td_center">Адрес</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td">Адрес</td></tr><tr><td class="element_td">Глобальный идентификационный номер предприятия</td><td class="td_center">GLN</td><td class="td_center">А</td><td class="td_center">
+                           T(1-100)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 7</div><div class="table_name"><span>СвЮЛ
+                  (Сведения о организации)
+               </span></div><table name="&#1057;&#1074;&#1070;&#1051;" id="7" data="&#1057;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1086;&#1088;&#1075;&#1072;&#1085;&#1080;&#1079;&#1072;&#1094;&#1080;&#1080;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Наименование</td><td class="td_center">Название</td><td class="td_center">А</td><td class="td_center">
+                           T(1-1000)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">ИНН</td><td class="td_center">ИНН</td><td class="td_center">А</td><td class="td_center">
+                           T(10-12)
+                        </td><td class="td_center">О</td><td class="element_td">Т(12)</td></tr><tr><td class="element_td">КПП</td><td class="td_center">КПП</td><td class="td_center">А</td><td class="td_center">
+                           T(1-255)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 8</div><div class="table_name"><span>СвФЛ
+                  (СвФЛ)
+               </span></div><table name="&#1057;&#1074;&#1060;&#1051;" id="8" data="&#1057;&#1074;&#1060;&#1051;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Отчество</td><td class="td_center">Отчество</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Имя</td><td class="td_center">Имя</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Фамилия</td><td class="td_center">Фамилия</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">ИНН</td><td class="td_center">ИНН</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td">ИНН</td></tr></table><br><div class="table_number">
+               Таблица 9</div><div class="table_name"><span>Адрес
+                  (Адрес)
+               </span></div><table name="&#1040;&#1076;&#1088;&#1077;&#1089;" id="9" data="&#1040;&#1076;&#1088;&#1077;&#1089;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">АдрТекст</td><td class="td_center">АдрТекст</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td">АдрТекст</td></tr><tr><td class="element_td">Тип</td><td class="td_center">Тип</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td">Тип</td></tr><tr><td class="element_td">Адрес местонахождения в Российской Федерации (структурированный)</td><td class="td_center" style="color: rgb(128, 179, 255);">АдрРФ</td><td class="td_center">ИС</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">АдрИно</td><td class="td_center" style="color: rgb(128, 179, 255);">АдрИно</td><td class="td_center">ИС</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 10</div><div class="table_name"><span>АдрРФ
+                  (Адрес местонахождения в Российской Федерации (структурированный))
+               </span></div><table name="&#1040;&#1076;&#1088;&#1056;&#1060;" id="10" data="&#1040;&#1076;&#1088;&#1077;&#1089; &#1084;&#1077;&#1089;&#1090;&#1086;&#1085;&#1072;&#1093;&#1086;&#1078;&#1076;&#1077;&#1085;&#1080;&#1103; &#1074; &#1056;&#1086;&#1089;&#1089;&#1080;&#1081;&#1089;&#1082;&#1086;&#1081; &#1060;&#1077;&#1076;&#1077;&#1088;&#1072;&#1094;&#1080;&#1080; (&#1089;&#1090;&#1088;&#1091;&#1082;&#1090;&#1091;&#1088;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1085;&#1099;&#1081;)" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Индекс</td><td class="td_center">Индекс</td><td class="td_center">А</td><td class="td_center">
+                           T(0-20)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">КодРегион</td><td class="td_center">КодРегион</td><td class="td_center">А</td><td class="td_center">
+                           T(=2)
+                        </td><td class="td_center">ОК</td><td class="element_td"></td></tr><tr><td class="element_td">Район</td><td class="td_center">Район</td><td class="td_center">А</td><td class="td_center">
+                           T(0-50)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Город</td><td class="td_center">Город</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">НаселПункт</td><td class="td_center">НаселПункт</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Улица</td><td class="td_center">Улица</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Дом</td><td class="td_center">Дом</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Корпус</td><td class="td_center">Корпус</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Кварт</td><td class="td_center">Кварт</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 11</div><div class="table_name"><span>АдрИно
+                  (АдрИно)
+               </span></div><table name="&#1040;&#1076;&#1088;&#1048;&#1085;&#1086;" id="11" data="&#1040;&#1076;&#1088;&#1048;&#1085;&#1086;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">КодСтр</td><td class="td_center">КодСтр</td><td class="td_center">А</td><td class="td_center">
+                           T(=3)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">АдрТекст</td><td class="td_center">АдрТекст</td><td class="td_center">А</td><td class="td_center">
+                           T(1-1000)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 12</div><div class="table_name"><span>Покупатель
+                  (Сведения о покупателе)
+               </span></div><table name="&#1055;&#1086;&#1082;&#1091;&#1087;&#1072;&#1090;&#1077;&#1083;&#1100;" id="12" data="&#1057;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1086;&#1082;&#1091;&#1087;&#1072;&#1090;&#1077;&#1083;&#1077;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Сведения о организации</td><td class="td_center groupby" groupby="1">СвЮЛ</td><td class="td_center">ИС</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">СвФЛ</td><td class="td_center groupby" groupby="1">СвФЛ</td><td class="td_center">ИС</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td">СвФЛ</td></tr><tr><td class="element_td">Адрес</td><td class="td_center">Адрес</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td">Адрес</td></tr><tr><td class="element_td">Глобальный идентификационный номер предприятия</td><td class="td_center">GLN</td><td class="td_center">А</td><td class="td_center">
+                           T(1-100)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 13</div><div class="table_name"><span>СвЮЛ
+                  (Сведения о организации)
+               </span></div><table name="&#1057;&#1074;&#1070;&#1051;" id="13" data="&#1057;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1086;&#1088;&#1075;&#1072;&#1085;&#1080;&#1079;&#1072;&#1094;&#1080;&#1080;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Наименование</td><td class="td_center">Название</td><td class="td_center">А</td><td class="td_center">
+                           T(1-1000)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">ИНН</td><td class="td_center">ИНН</td><td class="td_center">А</td><td class="td_center">
+                           T(10-12)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">КПП</td><td class="td_center">КПП</td><td class="td_center">А</td><td class="td_center">
+                           T(=9)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 14</div><div class="table_name"><span>СвФЛ
+                  (СвФЛ)
+               </span></div><table name="&#1057;&#1074;&#1060;&#1051;" id="14" data="&#1057;&#1074;&#1060;&#1051;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Отчество</td><td class="td_center">Отчество</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Имя</td><td class="td_center">Имя</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Фамилия</td><td class="td_center">Фамилия</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">ИНН</td><td class="td_center">ИНН</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td">ИНН</td></tr></table><br><div class="table_number">
+               Таблица 15</div><div class="table_name"><span>Адрес
+                  (Адрес)
+               </span></div><table name="&#1040;&#1076;&#1088;&#1077;&#1089;" id="15" data="&#1040;&#1076;&#1088;&#1077;&#1089;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">АдрТекст</td><td class="td_center">АдрТекст</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td">АдрТекст</td></tr><tr><td class="element_td">Тип</td><td class="td_center">Тип</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td">Тип</td></tr><tr><td class="element_td">Адрес местонахождения в Российской Федерации (структурированный)</td><td class="td_center" style="color: rgb(128, 179, 255);">АдрРФ</td><td class="td_center">ИС</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">АдрИно</td><td class="td_center" style="color: rgb(128, 179, 255);">АдрИно</td><td class="td_center">ИС</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 16</div><div class="table_name"><span>АдрРФ
+                  (Адрес местонахождения в Российской Федерации (структурированный))
+               </span></div><table name="&#1040;&#1076;&#1088;&#1056;&#1060;" id="16" data="&#1040;&#1076;&#1088;&#1077;&#1089; &#1084;&#1077;&#1089;&#1090;&#1086;&#1085;&#1072;&#1093;&#1086;&#1078;&#1076;&#1077;&#1085;&#1080;&#1103; &#1074; &#1056;&#1086;&#1089;&#1089;&#1080;&#1081;&#1089;&#1082;&#1086;&#1081; &#1060;&#1077;&#1076;&#1077;&#1088;&#1072;&#1094;&#1080;&#1080; (&#1089;&#1090;&#1088;&#1091;&#1082;&#1090;&#1091;&#1088;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1085;&#1099;&#1081;)" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Кварт</td><td class="td_center">Кварт</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Корпус</td><td class="td_center">Корпус</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Дом</td><td class="td_center">Дом</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Улица</td><td class="td_center">Улица</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">НаселПункт</td><td class="td_center">НаселПункт</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Город</td><td class="td_center">Город</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Район</td><td class="td_center">Район</td><td class="td_center">А</td><td class="td_center">
+                           T(0-50)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">КодРегион</td><td class="td_center">КодРегион</td><td class="td_center">А</td><td class="td_center">
+                           T(=2)
+                        </td><td class="td_center">ОК</td><td class="element_td"></td></tr><tr><td class="element_td">Индекс</td><td class="td_center">Индекс</td><td class="td_center">А</td><td class="td_center">
+                           T(0-20)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 17</div><div class="table_name"><span>АдрИно
+                  (АдрИно)
+               </span></div><table name="&#1040;&#1076;&#1088;&#1048;&#1085;&#1086;" id="17" data="&#1040;&#1076;&#1088;&#1048;&#1085;&#1086;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">КодСтр</td><td class="td_center">КодСтр</td><td class="td_center">А</td><td class="td_center">
+                           T(=3)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">АдрТекст</td><td class="td_center">АдрТекст</td><td class="td_center">А</td><td class="td_center">
+                           T(1-1000)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 18</div><div class="table_name"><span>Основание
+                  (Основание)
+               </span></div><table name="&#1054;&#1089;&#1085;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;" id="18" data="&#1054;&#1089;&#1085;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Дата основания</td><td class="td_center">Дата</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Номер основания</td><td class="td_center">Номер</td><td class="td_center">А</td><td class="td_center">
+                           T(1-100)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Название основания</td><td class="td_center">Название</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 19</div><div class="table_name"><span>ТаблДок
+                  (ТаблДок)
+               </span></div><table name="&#1058;&#1072;&#1073;&#1083;&#1044;&#1086;&#1082;" id="19" data="&#1058;&#1072;&#1073;&#1083;&#1044;&#1086;&#1082;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">СтрТабл</td><td class="td_center">СтрТабл</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">ОМ</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 20</div><div class="table_name"><span>СтрТабл
+                  (СтрТабл)
+               </span></div><table name="&#1057;&#1090;&#1088;&#1058;&#1072;&#1073;&#1083;" id="20" data="&#1057;&#1090;&#1088;&#1058;&#1072;&#1073;&#1083;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Параметр</td><td class="td_center">Параметр</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">НМ</td><td class="element_td"></td></tr><tr><td class="element_td">НДС</td><td class="td_center">НДС</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td">Налог</td></tr><tr><td class="element_td">Примечание</td><td class="td_center">Примечание</td><td class="td_center">А</td><td class="td_center">
+                           T(0-1000)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Артикул</td><td class="td_center">Артикул</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Код номенклатуры поставщика</td><td class="td_center">КодПоставщика</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Код номенклатуры покупателя</td><td class="td_center">КодПокупателя</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Штрих-код</td><td class="td_center">GTIN</td><td class="td_center">А</td><td class="td_center">
+                           T(1-100)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Идентификатор</td><td class="td_center">Идентификатор</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Приостановка цен</td><td class="td_center">ПриостановкаЦен</td><td class="td_center">А</td><td class="td_center">
+                        N()
+                     </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Наименование единицы измерения </td><td class="td_center">ЕдИзм</td><td class="td_center">П</td><td class="td_center">
+                           T(1-100)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Название</td><td class="td_center">Название</td><td class="td_center">А</td><td class="td_center">
+                           T(1-1000)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Количество товара</td><td class="td_center">Кол_во</td><td class="td_center">А</td><td class="td_center">
+                        N(.)
+                     </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Международное сокращение единицы измерения</td><td class="td_center">ОКЕИ</td><td class="td_center">П</td><td class="td_center">
+                           T(1-100)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Новая цена</td><td class="td_center">Цена</td><td class="td_center">А</td><td class="td_center">
+                        N(.)
+                     </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Старая цена</td><td class="td_center">ЦенаСтарая</td><td class="td_center">А</td><td class="td_center">
+                        N(.)
+                     </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Цена новая без НДС</td><td class="td_center">ЦенаБезНДС</td><td class="td_center">А</td><td class="td_center">
+                        N(17.)
+                     </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Цена старая без НДС</td><td class="td_center">ЦенаСтараяБезНДС</td><td class="td_center">А</td><td class="td_center">
+                        N(.)
+                     </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Кратность</td><td class="td_center">Кратность</td><td class="td_center">А</td><td class="td_center">
+                        N(.)
+                     </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">МинЗаказ</td><td class="td_center">МинЗаказ</td><td class="td_center">А</td><td class="td_center">
+                        N(.)
+                     </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 21</div><div class="table_name"><span>Параметр
+                  (Параметр)
+               </span></div><table name="&#1055;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;" id="21" data="&#1055;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Идентификатор</td><td class="td_center">Имя</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Значение</td><td class="td_center">Значение</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 22</div><div class="table_name"><span>НДС
+                  (НДС)
+               </span></div><table name="&#1053;&#1044;&#1057;" id="22" data="&#1053;&#1044;&#1057;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Название налога</td><td class="td_center">Название</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Величина ставки налога</td><td class="td_center">Ставка</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Тип ставки налога</td><td class="td_center">ТипСтавки</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td">Возможные значение: процент, дробь, текст</td></tr><tr><td class="element_td">Величина налога</td><td class="td_center">Сумма</td><td class="td_center">А</td><td class="td_center">
+                        N(17.5)
+                     </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 23</div><div class="table_name"><span>Подписант
+                  (Сведения о лице, подписывающем файл обмена счета-фактуры (информации продавца) в электронной форме)
+               </span></div><table name="&#1055;&#1086;&#1076;&#1087;&#1080;&#1089;&#1072;&#1085;&#1090;" id="23" data="&#1057;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1083;&#1080;&#1094;&#1077;, &#1087;&#1086;&#1076;&#1087;&#1080;&#1089;&#1099;&#1074;&#1072;&#1102;&#1097;&#1077;&#1084; &#1092;&#1072;&#1081;&#1083; &#1086;&#1073;&#1084;&#1077;&#1085;&#1072; &#1089;&#1095;&#1077;&#1090;&#1072;-&#1092;&#1072;&#1082;&#1090;&#1091;&#1088;&#1099; (&#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1080; &#1087;&#1088;&#1086;&#1076;&#1072;&#1074;&#1094;&#1072;) &#1074; &#1101;&#1083;&#1077;&#1082;&#1090;&#1088;&#1086;&#1085;&#1085;&#1086;&#1081; &#1092;&#1086;&#1088;&#1084;&#1077;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Физическое лицо</td><td class="td_center groupby" groupby="1">ФЛ</td><td class="td_center">ИС</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Индивидуальный предприниматель</td><td class="td_center groupby" groupby="1">ИП</td><td class="td_center">ИС</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Представитель юридического лица</td><td class="td_center groupby" groupby="1">ЮЛ</td><td class="td_center">ИС</td><td class="td_center"></td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Область полномочий</td><td class="td_center">ОблПолн</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">НК</td><td class="element_td"></td></tr><tr><td class="element_td">Статус</td><td class="td_center">Статус</td><td class="td_center">А</td><td class="td_center"></td><td class="td_center">НК</td><td class="element_td"></td></tr><tr><td class="element_td">Основание полномочий (доверия)</td><td class="td_center">ОснПолн</td><td class="td_center">А</td><td class="td_center">
+                           T(1-255)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Основание полномочий (доверия) организации</td><td class="td_center">ОснПолнОрг</td><td class="td_center">А</td><td class="td_center">
+                           T(1-255)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 24</div><div class="table_name"><span>ФЛ
+                  (Физическое лицо)
+               </span></div><table name="&#1060;&#1051;" id="24" data="&#1060;&#1080;&#1079;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1083;&#1080;&#1094;&#1086;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Фамилия, имя, отчество</td><td class="td_center">ФИО</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Реквизиты свидетельства о государственной регистрации индивидуального предпринимателя, выдавшего доверенность физическому лицу на подписание счета-фактуры</td><td class="td_center">ГосРегИПВыдДов</td><td class="td_center">А</td><td class="td_center">
+                           T(1-100)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">ИНН физического лица</td><td class="td_center">ИННФЛ</td><td class="td_center">А</td><td class="td_center">
+                           T(=12)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Иные сведения, идентифицирующие физическое лицо</td><td class="td_center">ИныеСвед</td><td class="td_center">А</td><td class="td_center">
+                           T(1-255)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 25</div><div class="table_name"><span>ФИО
+                  (Фамилия, имя, отчество)
+               </span></div><table name="&#1060;&#1048;&#1054;" id="25" data="&#1060;&#1072;&#1084;&#1080;&#1083;&#1080;&#1103;, &#1080;&#1084;&#1103;, &#1086;&#1090;&#1095;&#1077;&#1089;&#1090;&#1074;&#1086;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Фамилия</td><td class="td_center">Фамилия</td><td class="td_center">А</td><td class="td_center">
+                           T(1-60)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Имя</td><td class="td_center">Имя</td><td class="td_center">А</td><td class="td_center">
+                           T(1-60)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Отчество</td><td class="td_center">Отчество</td><td class="td_center">А</td><td class="td_center">
+                           T(1-60)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 26</div><div class="table_name"><span>ИП
+                  (Индивидуальный предприниматель)
+               </span></div><table name="&#1048;&#1055;" id="26" data="&#1048;&#1085;&#1076;&#1080;&#1074;&#1080;&#1076;&#1091;&#1072;&#1083;&#1100;&#1085;&#1099;&#1081; &#1087;&#1088;&#1077;&#1076;&#1087;&#1088;&#1080;&#1085;&#1080;&#1084;&#1072;&#1090;&#1077;&#1083;&#1100;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Фамилия, имя, отчество</td><td class="td_center">ФИО</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">ИНН</td><td class="td_center" style="color: rgb(128, 179, 255);">ИННФЛ</td><td class="td_center">ИА</td><td class="td_center">
+                           T(=12)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">ИНН при составлении документа с Функция=СЧФ или Функция=СЧФДОП налоговым агентом, указанным в пунктах 2 и 3 статьи 161 НК РФ, в части информации о продавце/грузоотправителе</td><td class="td_center" style="color: rgb(128, 179, 255);">ДефИННФЛ</td><td class="td_center">ИА</td><td class="td_center">
+                           T(=1)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Реквизиты свидетельства о государственной регистрации индивидуального предпринимателя</td><td class="td_center">СвГосРегИП</td><td class="td_center">А</td><td class="td_center">
+                           T(1-100)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Иные сведения, идентифицирующие физическое лицо</td><td class="td_center">ИныеСвед</td><td class="td_center">А</td><td class="td_center">
+                           T(1-255)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 27</div><div class="table_name"><span>ФИО
+                  (Фамилия, имя, отчество)
+               </span></div><table name="&#1060;&#1048;&#1054;" id="27" data="&#1060;&#1072;&#1084;&#1080;&#1083;&#1080;&#1103;, &#1080;&#1084;&#1103;, &#1086;&#1090;&#1095;&#1077;&#1089;&#1090;&#1074;&#1086;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Фамилия</td><td class="td_center">Фамилия</td><td class="td_center">А</td><td class="td_center">
+                           T(1-60)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Имя</td><td class="td_center">Имя</td><td class="td_center">А</td><td class="td_center">
+                           T(1-60)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Отчество</td><td class="td_center">Отчество</td><td class="td_center">А</td><td class="td_center">
+                           T(1-60)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 28</div><div class="table_name"><span>ЮЛ
+                  (Представитель юридического лица)
+               </span></div><table name="&#1070;&#1051;" id="28" data="&#1055;&#1088;&#1077;&#1076;&#1089;&#1090;&#1072;&#1074;&#1080;&#1090;&#1077;&#1083;&#1100; &#1102;&#1088;&#1080;&#1076;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1075;&#1086; &#1083;&#1080;&#1094;&#1072;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Фамилия, имя, отчество</td><td class="td_center">ФИО</td><td class="td_center">С</td><td class="td_center"></td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Реквизиты свидетельства о государственной регистрации индивидуального предпринимателя, выдавшего доверенность организации на подписание счета-фактуры</td><td class="td_center">ГосРегИПВыдДов</td><td class="td_center">А</td><td class="td_center">
+                           T(1-100)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">ИНН юридического лица</td><td class="td_center">ИННЮЛ</td><td class="td_center">А</td><td class="td_center">
+                           T(=10)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Наименование</td><td class="td_center">НаимОрг</td><td class="td_center">А</td><td class="td_center">
+                           T(1-1000)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr><tr><td class="element_td">Должность</td><td class="td_center">Должн</td><td class="td_center">А</td><td class="td_center">
+                           T(0-128)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Иные сведения, идентифицирующие физическое лицо</td><td class="td_center">ИныеСвед</td><td class="td_center">А</td><td class="td_center">
+                           T(1-255)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><div class="table_number">
+               Таблица 29</div><div class="table_name"><span>ФИО
+                  (Фамилия, имя, отчество)
+               </span></div><table name="&#1060;&#1048;&#1054;" id="29" data="&#1060;&#1072;&#1084;&#1080;&#1083;&#1080;&#1103;, &#1080;&#1084;&#1103;, &#1086;&#1090;&#1095;&#1077;&#1089;&#1090;&#1074;&#1086;" class="element_table"><tr class="table_header"><td class="element_td">Наименование элемента</td><td class="element_td">Сокращенное наименование (код) элемента</td><td class="element_td">Признак типа элемента</td><td class="element_td">Формат элемента</td><td class="element_td">Признак обязательности элемента</td><td class="element_td">Дополнительная информация</td></tr><tr><td class="element_td">Фамилия</td><td class="td_center">Фамилия</td><td class="td_center">А</td><td class="td_center">
+                           T(1-60)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Имя</td><td class="td_center">Имя</td><td class="td_center">А</td><td class="td_center">
+                           T(1-60)
+                        </td><td class="td_center">О</td><td class="element_td"></td></tr><tr><td class="element_td">Отчество</td><td class="td_center">Отчество</td><td class="td_center">А</td><td class="td_center">
+                           T(1-60)
+                        </td><td class="td_center">Н</td><td class="element_td"></td></tr></table><br><script type="text/javascript">
+var COLORS = [
+    '#cc3300',
+    '#80b3ff',
+    '#00e64d',
+    '#a300cc',
+    '#ff9900',
+    '#996633',
+    '#006600',
+    '#993333',
+    '#663300',
+    '#99ccff'
+];
+
+var colorMap = {};
+var lastUsedColorIndex = -1;
+
+function getColor(groupName) {
+   groupName = groupName || 'default';
+   let color = colorMap[groupName];
+   if (color) {
+      return color;
+   }
+   lastUsedColorIndex += 1;
+   if (lastUsedColorIndex >= COLORS.length) {
+      lastUsedColorIndex = 0;
+   }
+   color = COLORS[lastUsedColorIndex];
+   colorMap[groupName] = color;
+   return color;
+}
+
+function onLoadPage() {
+   var td_elems = document.getElementsByClassName('groupby');
+   for (i in td_elems) {
+      var el = td_elems[i];
+      el.style.color = getColor(el.getAttribute('groupby'));
+   }
+}
+
+         var tbl_count = '29';
+         for( var i = 1; i <= tbl_count; i++ ) // Просматриваем все таблицы
+         {
+            var tbl = document.getElementById( i );        // Текущая таблица
+            if( tbl )
+            {
+               var cur_table = tbl.getElementsByTagName( "tr" ); // Все строки текущей таблицы
+               for( var j = 1; j < cur_table.length; j++ ) // Просматриваем все строки текущей таблицы, кроме первой
+               {
+                  var tbl_columns = cur_table[j].getElementsByTagName( "td" );       // Берем все ячейки текущей строки
+                  if( tbl_columns[2].innerHTML == "С" )                              // Если текущая строка - составной элемент
+                  {
+                     var code = tbl_columns[1].innerHTML;                               // Из каждой строки берем столбец "Код",
+                     var link_tbls = document.getElementsByName( code ); // ищем таблицы с таким кодом
+                     if( link_tbls )
+                     {
+                        for( var jj = 0; jj < link_tbls.length; jj++ ) // Просматриваем все найденные таблицы
+                        {
+                           var link_tbl = link_tbls[jj];
+                           // если таблица существует и наименование элемента совпадает и она следует за текущей, то
+                           if( link_tbl && link_tbl.getAttribute("data") == tbl_columns[0].innerHTML &&  link_tbl.id > i )
+                           {
+                              // берем ее id и записываем ссылку на таблицу в ячейку
+                              tbl_columns[5].innerHTML = "Состав элемента представлен в таблице " + link_tbl.id;
+                              break;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      </script><br><div class="item"><p>Пример файла</p></div><div><p>Отсутствует пример для преобразования</p></div><br><div class="item"><p>Пример файла (визуализация)</p></div><div><p>Отсутствует пример для преобразования</p></div></body></html>
